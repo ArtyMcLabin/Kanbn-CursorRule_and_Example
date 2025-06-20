@@ -1,6 +1,24 @@
 # Cursor Kanbn Example + Cursor Rule
 
-Tutorial on Kanbn extension in Cursor IDE for project management and task tracking. fully local and git oriented solution. just works better than MCP's to web kanbans as of writing this. 
+Tutorial on how to have a local Kanban board in your Cursor projects, fully operational by LLM. it is based on "Kanbn" extension in Cursor IDE (see below). fully local and git oriented solution. just works better than MCP's to web kanbans as of writing this. 
+
+Note (if you don't want the extension): you technically don't depend on the extension and can skip it,  but it's good to have it for viewing stuff visually and being able to edit it yourself while your LLM cooks your pasta. also i designed the cursor rule around using a board that is initiated by the Kanbn extension, for consistent format. you would need to alter it.
+
+## Tutorial
+
+
+1. **Install the Kanbn extension** in Cursor IDE:
+   - Open Cursor IDE
+   - Go to Extensions tab (Ctrl+Shift+X)
+   - Search for "Kanbn"
+   - Install the extension (i am not affiliated with the developer. their github repo is https://github.com/samgiz/vscode-kanbn ) . as of 19jun2025 it seems secure. i have cyber-audited manually the downloaded extension.
+
+2. **Create/Open a board**:
+   - Use `Ctrl+Shift+P` → "Kanbn: Create Board / Open Board"
+   - The board is created locally in `.kanbn_boards/`
+
+3. Download the project rule i have created from this repo you are reading now, and put it in your project (or create a user rule from it for global useage, but i can't recommend it)
+
 
 ## Example of how it works in practice:
 
@@ -16,18 +34,5 @@ Result:
 
 ![image](https://github.com/user-attachments/assets/b184e042-b442-44bc-af38-e64e42f017ff)
 
-## Tutorial
 
-
-1. **Install the Kanbn extension** in Cursor IDE:
-   - Open Cursor IDE
-   - Go to Extensions tab (Ctrl+Shift+X)
-   - Search for "Kanbn"
-   - Install the extension (i am not affiliated with the developer. their github repo is https://github.com/samgiz/vscode-kanbn ) . as of 19jun2025 it seems secure. i have audited manually the downloaded extension.
-
-2. **Create/Open a board**:
-   - Use `Ctrl+Shift+P` → "Kanbn: Create Board / Open Board"
-   - The board is created locally in `.kanbn_boards/`
-
-3. Download the project rule i have created from this repo you are reading now, and put it in your project (or create a user rule from it for global useage, but i can't recommend it)
 
