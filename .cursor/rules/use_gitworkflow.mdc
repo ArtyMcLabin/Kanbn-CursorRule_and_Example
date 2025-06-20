@@ -1,0 +1,7 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+use GitWorkflow
+description: anything git related
