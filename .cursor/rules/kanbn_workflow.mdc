@@ -3,6 +3,8 @@ description: Always use this for anything related to task management / kanban / 
 globs:
 alwaysApply: false
 ---
+Rule version: v0.1 
+
 # Kanban Card Operations Optimization
 
 **For Kanbn Extension in Cursor IDE**
