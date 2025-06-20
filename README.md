@@ -1,16 +1,19 @@
 # Cursor Kanbn Example + Cursor Rule
 
-A demonstration project showing how to use the Kanbn extension in Cursor IDE for project management and task tracking.
+Tutorial on Kanbn extension in Cursor IDE for project management and task tracking. fully local and git oriented solution. just works better than MCP's to web kanbans as of writing this. 
 
 ## Example of how it works in practice:
 
 Initial dummy state:
-[image](https://github.com/user-attachments/assets/cfb52b4b-79aa-4698-95aa-4a13409e0a8a)
+
+![image](https://github.com/user-attachments/assets/cfb52b4b-79aa-4698-95aa-4a13409e0a8a)
 
 LLM Prompt in Cursor (fresh chat session):
+
 ![image](https://github.com/user-attachments/assets/17b650b6-ba36-4f2d-a12b-553a4eafc17d)
 
 Result:
+
 ![image](https://github.com/user-attachments/assets/b184e042-b442-44bc-af38-e64e42f017ff)
 
 ## Tutorial
