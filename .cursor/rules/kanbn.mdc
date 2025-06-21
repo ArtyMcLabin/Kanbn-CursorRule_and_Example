@@ -1,0 +1,105 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+Rule version: v0.3 
+
+# Kanban Card Operations Optimization
+
+**For Kanbn Extension in Cursor IDE**
+
+When working with kanbn boards (located in `.kanbn_boards/` directory) using the Kanbn extension in Cursor IDE:
+
+## Board Structure
+- Board index: `.kanbn_boards/{boardName}/.kanbn/index.md`
+- Task files: `.kanbn_boards/{boardName}/.kanbn/tasks/{taskName}.md`
+- Standard columns: Backlog, Todo, In Progress, Done (customizable)
+
+## File Operations Priority
+**CRITICAL: For kanbn file operations, always prefer terminal commands over specialized file tools:**
+- ✅ **Use terminal**: `Remove-Item`, `Copy-Item`, `Move-Item` for file management
+- ❌ **Avoid**: `delete_file`, `edit_file` for bulk operations - these tools may fail with nested kanbn directory structures
+- **Reason**: Kanbn files are in nested `.kanbn_boards/{board}/.kanbn/tasks/` paths that some tools handle poorly
+- **Exception**: Use `search_replace` for single-file content edits (index.md updates)
+
+## Task File Format
+```yaml
+---
+created: 2025-06-20T17:28:12.014Z
+updated: 2025-06-20T17:28:15.047Z
+assigned: ""
+progress: 0
+tags: []
+started: 2025-06-20T00:00:00.000Z  # Only for started columns
+---
+
+# TaskName
+
+Task description content
+```
+
+## Optimization Rules
+### Minimize Tool Calls
+- Use single search_replace to move card references between columns in board index
+- Update task metadata/content in separate call if needed
+- **Target: 2 calls total instead of 3+ separate operations**
+
+### Card Movement Pattern
+```
+INEFFICIENT: Remove from Todo + Add to Done + Update task = 3 calls
+EFFICIENT: Move Todo→Done in one operation + Update task = 2 calls
+```
+
+### When Moving Cards Between Columns:
+1. **Single search_replace** to move card reference in index.md:
+   ```
+   OLD: "- [cardname](tasks/cardname.md)" in source column
+   NEW: "- [cardname](tasks/cardname.md)" in target column
+   ```
+2. **If needed:** Update task file metadata (add `started:` field for In Progress, etc.)
+
+## Creating New Cards
+1. **Create task file** with proper frontmatter format
+   - **MANDATORY: Always check BOTH templates**: Read `kanbn-template-minimalistic.mdc` AND `kanbn-template-maximalistic.mdc` before creating any card
+   - Compare both templates to understand the full range of available fields and proper formatting
+   - Choose appropriate elements from either template based on card complexity and required features
+   - Pay special attention to subtasks format (`## Sub-tasks`) and YAML array formatting for tags
+2. **Add reference** to appropriate column in index.md
+3. Use timestamps matching project's existing format
+
+## Updating Card Titles/Filenames
+**CRITICAL: When changing card titles, you MUST update 4 places consistently:**
+1. **Task filename**: `oldname.md` → `newname.md`
+2. **Task file content**: `# Old Title` → `# New Title`
+3. **Index.md filename reference**: `(tasks/oldname.md)` → `(tasks/newname.md)`
+4. **Index.md link text**: `[oldname]` → `[newname]`
+
+**Failure to update all 4 places will break the Kanban board.**
+
+### Safe Workflow for Title Changes:
+1. Copy existing working task file to new filename
+2. Update title in new task file content
+3. Add new card reference to index.md
+4. Test board functionality
+5. Only then remove old card if needed
+
+### Known Limitations:
+- **ANY title change** on existing cards breaks the board
+- **Duplicate titles** across different lists break the board
+- **Line ending inconsistencies** (CRLF vs LF) break the board
+- **Metadata changes** (assigned, progress, tags, content) work fine
+- **Adding content after title** works fine
+
+## Viewing the Board
+**Always inform the user:** To view the kanbn board, use `Ctrl+Shift+P` → "Kanbn: Open Board"
+
+## Critical Success Factors
+- **Always match existing task format exactly** - check working tasks first OR reference template files
+- **Use template references**: Check `kanbn-template-minimalistic.mdc` and `kanbn-template-maximalistic.mdc` for proper card structure
+- **Preserve whitespace and structure** in index.md
+- **Use consistent timestamp format** across project
+- **Test minimal changes first** - revert if board breaks
+- **Remind user of board viewing shortcut** when creating/modifying cards
+
+Apply these patterns to all kanbn board operations for cost efficiency and stability across projects using the Kanbn extension in Cursor IDE.

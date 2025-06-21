@@ -1,0 +1,18 @@
+---
+description: 
+globs: .kanbn_boards/*/.kanbn/tasks/**
+alwaysApply: false
+---
+
+BELOW is an example full Content for a MINIMALISTIC card (including the "---") to be created as    .kanbn/tasks/<cardName>.md 
+
+
+---
+created: 2025-06-21T10:15:22.227Z
+updated: 2025-06-21T10:19:52.579Z
+assigned: ""
+progress: 0
+tags: []
+---
+
+# [Template] Minimalistic

@@ -1,0 +1,43 @@
+---
+description: 
+globs: .kanbn_boards/*/.kanbn/tasks/**
+alwaysApply: false
+---
+
+BELOW is an example full Content for a MAXIMALISTIC card (including the "---") to be created as    .kanbn/tasks/<cardName>.md 
+
+
+---
+created: 2025-06-21T10:15:57.208Z
+updated: 2025-06-21T10:18:28.123Z
+assigned: Bobs
+progress: 0.95
+tags:
+  - Tag1
+  - Tag2
+due: 2025-06-22T00:00:00.000Z
+started: 2025-06-21T00:00:00.000Z
+completed: 2025-06-23T00:00:00.000Z
+---
+
+# [Template] Maximalistic
+
+arstarst
+
+## Sub-tasks
+
+- [ ] arstarstar
+- [x] arstars
+
+## Relations
+
+- [template-minimalistic](template-minimalistic.md)
+
+## Comments
+
+- author: Bobs Veganaman
+  date: 2025-06-21T10:15:55.203Z
+  text of comment
+- author: Richy Dickmanson
+  date: 2025-06-21T10:17:11.675Z
+  comment text 2
